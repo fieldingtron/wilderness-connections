@@ -9,6 +9,19 @@ import DarkModeToggle from './DarkModeToggle.astro';
 <header class="bg-white dark:bg-gray-900 shadow-md fixed w-full z-50">
   <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
     <!-- Logo -->
+      <img 
+     src="/favicon-96x96.png" 
+     alt="Wilderness Reflections Logo" 
+     class="h-12 w-12  dark:hidden" 
+   />
+   <img 
+     src="/favicon-dark-96x96.png" 
+     alt="Wilderness Reflections Logo Dark" 
+     class="h-12 w-12 hidden dark:block" 
+   />
+
+
+
     <a href="/" class="text-2xl font-bold text-gray-800 dark:text-white uppercase">{siteName}</a>
 
     <!-- Hamburger Icon -->
