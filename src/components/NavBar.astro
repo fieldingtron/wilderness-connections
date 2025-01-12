@@ -61,15 +61,24 @@ import DarkModeToggle from './DarkModeToggle.astro';
 </header>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const menu = document.getElementById('menu');
-      const toggle = document.getElementById('mobile-menu-toggle');
-  
-      if (toggle) {
-        toggle.addEventListener('click', () => {
-          // Toggle the 'hidden' class on the menu
-          menu?.classList.toggle('hidden');
-        });
-      }
-    });
-  </script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menu = document.getElementById('menu');
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const iconPath = toggle.querySelector('svg path');
+
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        // Toggle the 'hidden' class on the menu
+        menu?.classList.toggle('hidden');
+
+        // Change the icon based on the menu state
+        if (menu?.classList.contains('hidden')) {
+          iconPath.setAttribute('d', 'M4 6h16M4 12h16m-7 6h7'); // Hamburger icon
+        } else {
+          iconPath.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // X icon
+        }
+      });
+    }
+  });
+</script>
+
