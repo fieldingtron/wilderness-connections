@@ -1,0 +1,79 @@
+---
+// Import required dependencies
+import Image from "astro:assets";
+---
+
+<section
+  id="about"
+  class="bg-gray-200 dark:bg-gray-900 py-16 md:py-24 bg-no-repeat bg-left-bottom bg-fixed"
+>
+  <div
+    class="container mx-auto px-4 flex flex-col items-center space-y-8 md:flex-row md:space-y-0 md:space-x-8"
+  >
+    <div class="w-full md:w-1/2 text-center md:text-left">
+      <h2
+        class="text-green-600 dark:text-green-400 text-sm uppercase font-bold mb-2"
+        data-aos="slide-up"
+        data-aos-offset="120"
+        data-aos-duration="400"
+        data-aos-easing="ease-in-out"
+        data-aos-once="true"
+      >
+        Wilderness Connections
+      </h2>
+      <h3
+        class="text-4xl font-bold text-gray-900 dark:text-white mb-4"
+        data-aos="slide-up"
+        data-aos-delay="50"
+        data-aos-duration="400"
+        data-aos-easing="ease-in-out"
+        data-aos-once="true"
+      >
+        Dicover our Mission
+      </h3>
+      <p
+        class="text-lg text-gray-700 dark:text-gray-300 mb-6"
+        data-aos="slide-up"
+        data-aos-delay="100"
+        data-aos-duration="400"
+        data-aos-easing="ease-in-out"
+        data-aos-once="true"
+      >
+        At Wilderness Connections, our mission is to inspire teens to step away
+        from their screens and reconnect with the natural world. Through
+        immersive outdoor adventures, we provide opportunities to explore
+        breathtaking landscapes, build lasting friendships, and develop a deep
+        appreciation for nature. Guided by experienced mentors, participants
+        gain valuable life skills, self-confidence, and a sense of belonging
+        while discovering the beauty and interconnectedness of the world around
+        them. Join us in fostering a generation that cherishes and protects the
+        planet by making real-world connections in the great outdoors
+      </p>
+      <a
+        href={`https://wa.me/13525028826`}
+        class="text-blue-600 dark:text-blue-400 underline font-semibold"
+        data-aos="slide-up"
+        data-aos-delay="200"
+        data-aos-duration="400"
+        data-aos-easing="ease-in-out"
+        data-aos-once="true"
+      >
+        Contact Us
+      </a>
+    </div>
+    <div
+      class="w-full md:w-1/2"
+      data-aos="fade-in"
+      data-aos-offset="120"
+      data-aos-duration="400"
+      data-aos-easing="ease-in-out"
+      data-aos-once="true"
+    >
+      <img
+        src="/img/aboutwc.webp"
+        alt="About Section Image"
+        class="rounded-lg shadow-lg"
+      />
+    </div>
+  </div>
+</section>

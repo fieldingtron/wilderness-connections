@@ -2,46 +2,49 @@
 export interface Props {
   siteName: string;
 }
-const siteName = Astro.props.siteName || "Wilderness Connections"
+const siteName = Astro.props.siteName || "Wilderness Connections";
 
 import Footer from "../components/Footer.astro";
-import NavBar from '../components/NavBar.astro';
-import '../styles/global.css';
-import 'aos/dist/aos.css';
-
-
+import NavBar from "../components/NavBar.astro";
+import "../styles/global.css";
+import "aos/dist/aos.css";
+import AboutUs from "../components/AboutUs.astro";
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{siteName}</title>
-	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-	<link rel="shortcut icon" href="/favicon.ico" />
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-	<meta name="apple-mobile-web-app-title" content="WildernessReflections" />
-	<link rel="manifest" href="/site.webmanifest" />
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    </head>
-  <body class="dark:bg-darkBlue dark:text-white  font-poppins">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="WildernessReflections" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="dark:bg-darkBlue dark:text-white font-poppins">
     <NavBar siteName={siteName} />
     <main>
       <slot />
     </main>
     <Footer />
-	 <!-- AOS Initialization Script -->
-	 <script>
-		document.addEventListener('DOMContentLoaded', () => {
-		  import('aos').then((AOS) => {
-			AOS.init({
-			  duration: 1000, // Animation duration in milliseconds
-			  offset: 120,    // Offset from the original trigger point
-			  easing: 'ease', // Easing function
-			});
-		  });
-		});
-	  </script>
+    <!-- AOS Initialization Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        import("aos").then((AOS) => {
+          AOS.init({
+            duration: 1000, // Animation duration in milliseconds
+            offset: 120, // Offset from the original trigger point
+            easing: "ease", // Easing function
+          });
+        });
+      });
+    </script>
   </body>
 </html>
