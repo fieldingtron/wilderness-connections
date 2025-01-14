@@ -3,79 +3,112 @@ export interface Props {
   siteName: string;
 }
 const { siteName } = Astro.props;
-import DarkModeToggle from './DarkModeToggle.astro';
+import DarkModeToggle from "./DarkModeToggle.astro";
 ---
 
 <header class="bg-white dark:bg-gray-900 shadow-md fixed w-full z-50">
-  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-    <div class="flex items-center justify-between" >
-    <!-- Logo -->
-      <img 
-     src="/favicon-96x96.png" 
-     alt="Wilderness Reflections Logo" 
-     class="h-12 w-12  dark:hidden" 
-   />
-   <img 
-     src="/favicon-dark-96x96.png" 
-     alt="Wilderness Reflections Logo Dark" 
-     class="h-12 w-12 hidden dark:block" 
-   />
-    <a href="/" class="mx-4 text-lg kg:text-2xl font-bold text-gray-800 dark:text-white uppercase">{siteName}</a>
+  <nav
+    class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16"
+  >
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <img
+        src="/favicon-96x96.png"
+        alt="Wilderness Reflections Logo"
+        class="h-12 w-12 dark:hidden"
+      />
+      <img
+        src="/favicon-dark-96x96.png"
+        alt="Wilderness Reflections Logo Dark"
+        class="h-12 w-12 hidden dark:block"
+      />
+      <a
+        href="/"
+        class="mx-4 text-lg kg:text-2xl font-bold text-gray-800 dark:text-white uppercase"
+        >{siteName}</a
+      >
     </div>
 
     <!-- Hamburger Icon -->
-    <button id="mobile-menu-toggle" class=lg:hidden text-gray-800 dark:text-white focus:outline-none" aria-label="Toggle menu">
-      <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"></path>
+    <button
+      id="mobile-menu-toggle"
+      class="lg:hidden"
+      text-gray-800
+      dark:text-white
+      focus:outline-none"
+      aria-label="Toggle menu"
+    >
+      <svg
+        class="h-6 w-6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M4 6h16M4 12h16m-7 6h7"></path>
       </svg>
     </button>
 
     <!-- Menu Items -->
-    <ul 
-    id="menu" 
-    class="hidden lg:flex flex-col lg:flex-row items-center justify-center bg-white dark:bg-gray-900 lg:bg-transparent 
-           absolute lg:relative w-full lg:w-auto top-16 lg:top-auto left-0 lg:left-auto space-y-4 lg:space-y-0 lg:space-x-6 
+    <ul
+      id="menu"
+      class="hidden lg:flex flex-col lg:flex-row items-center justify-center bg-white dark:bg-gray-900 lg:bg-transparent
+           absolute lg:relative w-full lg:w-auto top-16 lg:top-auto left-0 lg:left-auto space-y-4 lg:space-y-0 lg:space-x-6
            shadow-md lg:shadow-none pb-4 lg:pb-0"
-  >
-    <li class="flex justify-center items-center">
-      <a class="block px-3 py-2 text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300" href="/programs">Programs</a>
-    </li>
-    <li class="flex justify-center items-center">
-      <a class="block px-3 py-2 text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300" href="/about">About</a>
-    </li>
-    <li class="flex justify-center items-center">
-      <a class="block px-3 py-2 text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300" href="/testimonials">Testimonials</a>
-    </li>
-    <li class="flex justify-center items-center">
-      <a class="block px-3 py-2 text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300" href="/contact">Contact</a>
-    </li>
-    <li class="flex justify-center items-center">
-      <DarkModeToggle />
-    </li>
-  </ul>
-  
+    >
+      <li class="flex justify-center items-center">
+        <a
+          class="block px-3 py-2 text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
+          href="/programs">Programs</a
+        >
+      </li>
+      <li class="flex justify-center items-center">
+        <a
+          class="block px-3 py-2 text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
+          href="/about">About</a
+        >
+      </li>
+      <li class="flex justify-center items-center">
+        <a
+          class="block px-3 py-2 text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
+          href="/testimonials">Testimonials</a
+        >
+      </li>
+      <li class="flex justify-center items-center">
+        <a
+          class="block px-3 py-2 text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
+          href="/contact">Contact</a
+        >
+      </li>
+      <li class="flex justify-center items-center">
+        <DarkModeToggle />
+      </li>
+    </ul>
   </nav>
 </header>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const menu = document.getElementById('menu');
-    const toggle = document.getElementById('mobile-menu-toggle');
-    const iconPath = toggle.querySelector('svg path');
+  document.addEventListener("DOMContentLoaded", () => {
+    const menu = document.getElementById("menu");
+    const toggle = document.getElementById("mobile-menu-toggle");
+    const iconPath = toggle.querySelector("svg path");
 
     if (toggle) {
-      toggle.addEventListener('click', () => {
+      toggle.addEventListener("click", () => {
         // Toggle the 'hidden' class on the menu
-        menu?.classList.toggle('hidden');
+        menu?.classList.toggle("hidden");
 
         // Change the icon based on the menu state
-        if (menu?.classList.contains('hidden')) {
-          iconPath.setAttribute('d', 'M4 6h16M4 12h16m-7 6h7'); // Hamburger icon
+        if (menu?.classList.contains("hidden")) {
+          iconPath.setAttribute("d", "M4 6h16M4 12h16m-7 6h7"); // Hamburger icon
         } else {
-          iconPath.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // X icon
+          iconPath.setAttribute("d", "M6 18L18 6M6 6l12 12"); // X icon
         }
       });
     }
   });
 </script>
-

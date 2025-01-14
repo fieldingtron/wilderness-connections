@@ -1,0 +1,51 @@
+---
+// Props definition
+// const { fotos } = Astro.props;
+
+// Example props
+const fotos = [
+  { imgSrc: "/img/gallery1.jpg", name: "gallery1" },
+  { imgSrc: "/img/gallery2.jpg", name: "gallery2" },
+  { imgSrc: "/img/gallery3.jpg", name: "gallery3" },
+  { imgSrc: "/img/gallery4.jpg", name: "gallery4" },
+  { imgSrc: "/img/gallery5.jpg", name: "gallery5" },
+  { imgSrc: "/img/gallery6.jpg", name: "gallery6" },
+];
+---
+
+<section class="dark:bg-darkBlue bg-gray-200" id="fotos">
+  <div class="container mx-auto p-6 lg:mb-0">
+    <h1 class="text-3xl md:text-4xl lg:text-6xl text-center p-4 py-6 uppercase">
+      Photos
+    </h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {
+        fotos?.map &&
+          fotos.map((foto, index) => (
+            <div class="h-full w-full" key={`divf${index}`}>
+              <a href={foto.imgSrc} class="glightbox" data-gallery="gallery">
+                <img
+                  src={foto.imgSrc}
+                  alt={foto.name}
+                  key={`fotos${index}`}
+                  class="w-full cursor-zoom-in"
+                />
+              </a>
+            </div>
+          ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import GLightbox from "glightbox";
+  import "glightbox/dist/css/glightbox.css";
+
+  GLightbox({
+    selector: ".glightbox",
+    touchNavigation: true,
+    loop: true,
+  });
+</script>
