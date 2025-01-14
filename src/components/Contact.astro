@@ -1,0 +1,118 @@
+<section
+  class="dark:bg-darkBlue3 bg-alt2 bg-no-repeat bg-right-bottom bg-araucaria"
+  id="contact"
+>
+  <h1
+    class="text-3xl md:text-4xl lg:text-6xl text-center p-4 py-6 uppercase"
+    id=""
+  >
+    Contact Us
+  </h1>
+  <div class="container mx-auto my-1 py-1">
+    <div class="w-full max-w-2xl mx-auto my-2">
+      <div class="p-6 border rounded-md">
+        <div
+          id="response-message"
+          class="p-6 text-5xl text-red-600 text-center font-extrabold"
+        >
+        </div>
+        <form method="post" onsubmit="window.submitForm(event)">
+          <label class="block mb-6">
+            <span>Your Name</span>
+            <input
+              name="your-name"
+              type="text"
+              required
+              minlength="3"
+              class="block w-full mt-1 p-2 px-3 border-gray-300 rounded-md shadow-sm dark:text-white dark:bg-darkGrayishBlue"
+              placeholder="Freeflowing Rivers"
+            />
+          </label>
+          <label class="block mb-6">
+            <span>Email Address</span>
+            <input
+              name="your-email"
+              type="email"
+              required
+              minlength="5"
+              class="block w-full mt-1 p-2 px-3 border-gray-300 rounded-md shadow-sm dark:text-white dark:bg-darkGrayishBlue"
+              placeholder="john.rivers@gmail.com"
+            />
+          </label>
+          <label class="block mb-6">
+            <span>Message</span>
+            <textarea
+              name="your-message"
+              rows="3"
+              required
+              minlength="5"
+              class="block w-full mt-1 p-2 px-3 border-gray-300 rounded-md shadow-sm dark:text-white dark:bg-darkGrayishBlue"
+              placeholder="Tell us what you're thinking..."></textarea>
+          </label>
+          <div class="mb-2">
+            <button
+              type="submit"
+              class="h-10 px-5 font-semibold rounded-lg text-white transition ease-in-out duration-150 bg-indigo-700 hover:bg-indigo-800"
+            >
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  console.log("Script Loaded");
+
+  const EMAIL_URL = import.meta.env.PUBLIC_EMAIL_URL;
+  console.log(EMAIL_URL);
+
+  const contactform = {
+    sent: "Message Sent!",
+    sendMessage: "Send Message",
+  };
+
+  function submitForm(event) {
+    event.preventDefault();
+    alert("Testing JavaScript integration");
+
+    const form = event.target;
+    const formData = new FormData(form);
+
+    formData.append("_wpcf7", "343");
+    formData.append("_wpcf7_unit_tag", "e73e2f6");
+
+    const submitButton = form.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting...";
+
+    console.log("FormData Entries:");
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}: ${value}`);
+    }
+
+    fetch(EMAIL_URL, {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        console.log("Form successfully submitted");
+        document.getElementById("response-message").textContent =
+          contactform.sent;
+        form.reset();
+      })
+      .catch((error) => {
+        console.error("Error during form submission:", error);
+        alert("Something went wrong. Please try again later.");
+      })
+      .finally(() => {
+        submitButton.disabled = false;
+        submitButton.textContent = contactform.sendMessage;
+      });
+  }
+</script>

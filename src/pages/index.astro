@@ -3,18 +3,16 @@ import Layout from "../layouts/Layout.astro";
 import Hero1 from "../components/Hero1.astro";
 import AboutUs from "../components/AboutUs.astro";
 import Trips from "../components/Trips.astro";
-import { getCollection } from "astro:content";
 import Photos from "../components/Photos.astro";
-const trips = await getCollection("trips");
-// console.log(trips);
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import FAQ from "../components/FAQ.astro";
+import Contact from "../components/Contact.astro";
 ---
 
 <Layout siteName="Wilderness Connections">
   <Hero1 />
   <AboutUs />
-  <Trips trips={trips} />
+  <Trips />
   <Photos />
+  <FAQ />
+  <Contact />
 </Layout>

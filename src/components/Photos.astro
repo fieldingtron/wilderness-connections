@@ -1,16 +1,8 @@
 ---
-// Props definition
-// const { fotos } = Astro.props;
-
-// Example props
-const fotos = [
-  { imgSrc: "/img/gallery1.jpg", name: "gallery1" },
-  { imgSrc: "/img/gallery2.jpg", name: "gallery2" },
-  { imgSrc: "/img/gallery3.jpg", name: "gallery3" },
-  { imgSrc: "/img/gallery4.jpg", name: "gallery4" },
-  { imgSrc: "/img/gallery5.jpg", name: "gallery5" },
-  { imgSrc: "/img/gallery6.jpg", name: "gallery6" },
-];
+//  https://docs.astro.build/en/reference/modules/astro-content/#getentry
+import * as Content from "../content/index.mdx";
+//console.log(Content.frontmatter.fotos);
+const fotos = Content.frontmatter.fotos;
 ---
 
 <section class="dark:bg-darkBlue bg-gray-200" id="fotos">

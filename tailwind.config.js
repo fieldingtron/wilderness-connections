@@ -13,7 +13,17 @@ module.exports = {
       xl: "1440px",
     },
     extend: {
+      backgroundImage: (theme) => ({
+    
+        //"martin-pescador": "url('/img/martin-pescador.png')",
+        araucaria: "url('/img/araucarias1_bckgr.png')",
+      }),
+
       colors: {
+        
+        alt1: '#68A8DE',
+        alt2: '#5792C2',
+
         strongCyan: "hsl(171, 66%, 44%)",
         lightBlue: "hsl(233, 100%, 69%)",
         darkGrayishBlue: "hsl(210, 10%, 33%)",

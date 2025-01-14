@@ -1,0 +1,49 @@
+---
+import * as Content from "../content/index.mdx";
+const faqs = Content.frontmatter.faqs;
+---
+
+<section
+  class="dark:bg-darkBlue2 bg-gray-100 bg-fixed bg-no-repeat bg-right-bottom md:bg-martin-pescador"
+  id="lineUp"
+>
+  <div class="container mx-auto p-6 lg:mb-0">
+    <h2
+      class="text-3xl md:text-4xl text-center font-semibold p-4 py-6 capitalize"
+    >
+      Frequently Asked Questions
+    </h2>
+
+    <div class="max-w-2xl m-8 mx-auto overflow-hidden">
+      {
+        faqs.map((faq, index) => (
+          <div
+            class="py-1 border-b outline-none group"
+            tabIndex={index}
+            key={`question${index}`}
+          >
+            <div class="flex items-center justify-between py-3 transition duration-500 cursor-pointer group ease">
+              <div class="transition duration-500 ease text-black dark:text-white group-hover:text-red-500 font-semibold">
+                {faq.question}
+              </div>
+
+              <div class="transition duration-500 ease group-focus:-rotate-180 group-focus:text-red-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12">
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    d="M1 1l8 8 8-8"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="overflow-hidden transition duration-500 group-focus:max-h-screen max-h-0 ease">
+              <p class="py-2 text-justify">{faq.answer}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,9 +1,7 @@
 ---
-const {
-  servicestitle1 = "Our Trips",
-  servicestitle2 = "Explore our exciting range of trips.",
-  trips = [],
-} = Astro.props;
+import * as Content from "../content/index.mdx";
+// console.log(Content.frontmatter.trips);
+const trips = Content.frontmatter.trips;
 ---
 
 <section
@@ -12,13 +10,13 @@ const {
 >
   <div class="container mx-auto px-4">
     <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold" data-aos="slide-up">{servicestitle1}</h2>
+      <h2 class="text-4xl font-bold" data-aos="slide-up">Our Trips</h2>
       <p
         class="capitalize text-lg mt-4"
         data-aos="slide-up"
         data-aos-delay="50"
       >
-        {servicestitle2}
+        Explore our exciting range of trips.
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -28,20 +26,20 @@ const {
             <div class="group relative bg-white rounded-lg shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-2xl dark:bg-gray-900 flex flex-col h-full md:min-h-[500px] xl:min-h-[300px]">
               <div class="relative h-56 overflow-hidden">
                 <img
-                  src={trip.data.imgSrc}
-                  alt={trip.data.description}
+                  src={trip.imgSrc}
+                  alt={trip.description}
                   class="object-cover group-hover:scale-110 transition-transform duration-300 w-full h-full"
                 />
               </div>
               <div class="p-6 flex flex-col flex-grow">
                 <h3 class="text-xl font-bold mb-2 group-hover:text-green-500 capitalize">
-                  {trip.data.name}
+                  {trip.name}
                 </h3>
-                <p class="">Dates: {trip.data.dates}</p>
-                <p class="flex-grow">{trip.data.description}</p>
+                <p class="">Dates: {trip.dates}</p>
+                <p class="flex-grow">{trip.description}</p>
 
                 <div class="mt-auto">
-                  <p>{trip.data.price}</p>
+                  <p>{trip.price}</p>
                   <p>Click for more info</p>
                 </div>
               </div>
