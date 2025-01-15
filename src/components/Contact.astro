@@ -62,26 +62,29 @@
     </div>
   </div>
 </section>
-
 <script>
   console.log("Script Loaded");
 
   const EMAIL_URL =
     "https://contemplative.dreamhosters.com/wp-json/contact-form-7/v1/contact-forms/343/feedback";
-  console.log(EMAIL_URL);
 
   const contactform = {
     sent: "Message Sent!",
     sendMessage: "Send Message",
+    errorMessage:
+      "There was an error submitting the form. Please try again later.",
   };
 
-  function submitForm(event) {
+  // Ensure the function is globally accessible
+  window.submitForm = function (event) {
     event.preventDefault();
-    alert("Testing JavaScript integration");
+    console.log("Submitting form...");
 
+    // Get the form and button
     const form = event.target;
     const formData = new FormData(form);
 
+    // Add any required hidden fields
     formData.append("_wpcf7", "343");
     formData.append("_wpcf7_unit_tag", "e73e2f6");
 
@@ -94,26 +97,50 @@
       console.log(`${key}: ${value}`);
     }
 
+    // Submit the form
     fetch(EMAIL_URL, {
       method: "POST",
       body: formData,
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+      .then(async (response) => {
+        // Parse the response as JSON
+        const data = await response.json();
+        console.log("Parsed Response:", data);
+
+        if (!response.ok || data.status !== "mail_sent") {
+          // Handle errors based on response
+          throw new Error(
+            data.message || `HTTP error! status: ${response.status}`
+          );
         }
+
+        // Success: Show the success message and reset the form
         console.log("Form successfully submitted");
         document.getElementById("response-message").textContent =
           contactform.sent;
         form.reset();
       })
       .catch((error) => {
+        // Handle and display errors
         console.error("Error during form submission:", error);
-        alert("Something went wrong. Please try again later.");
+        document.getElementById("response-message").textContent =
+          contactform.errorMessage;
       })
       .finally(() => {
+        // Re-enable the submit button
         submitButton.disabled = false;
         submitButton.textContent = contactform.sendMessage;
       });
-  }
+  };
+
+  // Ensure the form is bound to the function
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
+    if (form) {
+      form.addEventListener("submit", window.submitForm);
+      console.log("Form submission event bound.");
+    } else {
+      console.error("Form not found!");
+    }
+  });
 </script>
