@@ -8,9 +8,11 @@ const trips = Content.frontmatter.trips;
   id="trips"
   class="py-16 bg-fixed bg-no-repeat bg-right-bottom md:bg-martin-pescador capitalize"
 >
-  <div class="container mx-auto px-4">
+  <div class="container mx-auto px-4 mt-12">
     <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold" data-aos="slide-up">Our Trips</h2>
+      <h2 class="text-4xl font-bold captalize" data-aos="slide-up">
+        Our Trips overview
+      </h2>
       <p
         class="capitalize text-lg mt-4"
         data-aos="slide-up"
@@ -19,28 +21,27 @@ const trips = Content.frontmatter.trips;
         Explore our exciting range of trips.
       </p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
       {
         trips.map((trip, i) => (
           <a href={`#trip${i}`} class="open-popup-link">
-            <div class="group relative bg-white rounded-lg shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-2xl dark:bg-gray-900 flex flex-col h-full md:min-h-[500px] xl:min-h-[300px]">
-              <div class="relative h-56 overflow-hidden">
+            <div class="group relative bg-white rounded-lg shadow-lg transition-shadow duration-300 hover:shadow-2xl dark:bg-gray-900 flex flex-col md:flex-row h-full mx-10">
+              <div class="relative w-full md:w-1/2 h-64 md:h-auto overflow-hidden"> <!-- Image on the left -->
                 <img
                   src={trip.imgSrc}
                   alt={trip.description}
-                  class="object-cover group-hover:scale-110 transition-transform duration-300 w-full h-full"
+                  class="object-cover w-full h-full"
                 />
               </div>
-              <div class="p-6 flex flex-col flex-grow">
+              <div class="p-6 flex flex-col w-full md:w-1/2"> <!-- Text on the right -->
                 <h3 class="text-xl font-bold mb-2 group-hover:text-green-500 capitalize">
                   {trip.name}
                 </h3>
-                <p class="">Dates: {trip.dates}</p>
-                <p class="flex-grow">{trip.description}</p>
-
+                <p class="mb-2"><strong>Dates:</strong> {trip.dates}</p>
+                <p class="mb-4 flex-grow">{trip.description}</p>
                 <div class="mt-auto">
-                  <p>{trip.price}</p>
-                  <p>Click for more info</p>
+                  <p class="font-bold text-lg">{trip.price}</p>
+                  <p class="text-sm text-gray-500">Click for more info</p>
                 </div>
               </div>
             </div>

@@ -23,7 +23,8 @@
     viewBox="0 0 20 20"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+    ></path>
   </svg>
 </button>
 
@@ -37,7 +38,9 @@
     // Check user preference from localStorage or system setting
     const userPreference =
       localStorage.getItem("theme") ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light");
 
     // Apply the initial theme
     if (userPreference === "dark") {
@@ -62,8 +65,8 @@
       } else {
         document.documentElement.classList.add("dark");
         localStorage.setItem("theme", "dark");
-        lightIcon.classList.remove("hidden");
-        darkIcon.classList.add("hidden");
+        lightIcon?.classList.remove("hidden");
+        darkIcon?.classList.add("hidden");
       }
     });
   });

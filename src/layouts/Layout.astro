@@ -27,12 +27,16 @@ import AboutUs from "../components/AboutUs.astro";
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <link href="../styles/global.css" rel="stylesheet" />
   </head>
-  <body class="dark:bg-darkBlue dark:text-white font-poppins">
+  <body
+    class="dark:bg-darkBlue dark:text-white text-gray-800 bg-white font-poppins"
+  >
     <NavBar siteName={siteName} />
     <main>
       <slot />
     </main>
+
     <Footer />
     <!-- AOS Initialization Script -->
     <script>
