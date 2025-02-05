@@ -1,0 +1,63 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import FAQ from "../../components/FAQ.astro";
+import Contact from "../../components/Contact.astro";
+
+export async function getStaticPaths() {
+  const tripEntries = await import.meta.glob("../../content/trips/*.mdx", {
+    eager: true,
+  });
+
+  // Extract frontmatter and Content component
+  const trips = Object.values(tripEntries).map((mod) => ({
+    ...mod.frontmatter,
+    Content: mod.default, // Extract MDX content
+  }));
+
+  return trips.map((trip) => ({
+    params: { slug: trip.slug },
+    props: { trip }, // Pass trip data including Content
+  }));
+}
+
+const { trip } = Astro.props;
+
+if (!trip) {
+  throw new Error("Trip not found");
+}
+---
+
+<Layout siteName={trip.name}>
+  <section class="container mx-auto px-4 py-12">
+    <div class="p-6 mt-5 lg:mb-0 lg:mx-12">
+      <h1 class="text-4xl font-bold text-center">{trip.name}</h1>
+      <img
+        src={trip.imgSrc}
+        alt={trip.name}
+        class="w-full max-w-2xl mx-auto mt-6 rounded-lg shadow-lg"
+      />
+      <div class="max-w-2xl mx-auto mt-6">
+        <p class="mt-4 text-lg"><strong>Dates:</strong> {trip.dates}</p>
+        <p class="mt-2 text-lg"><strong>Details:</strong> {trip.details}</p>
+        <p class="mt-2 text-lg"><strong>Price:</strong> {trip.price}</p>
+
+        <h2 class="mt-6 text-2xl font-semibold">Additional Details</h2>
+        <ul class="mt-2 list-disc list-inside text-lg">
+          {trip.additionalDetails.map((detail) => <li>{detail}</li>)}
+        </ul>
+
+        <!-- Render the MDX content below -->
+        <div class="prose lg:prose-xl mx-auto mt-8">
+          <trip.Content />
+        </div>
+
+        <a href="/trips" class="block mt-6 text-blue-500 hover:underline">
+          Back to all trips
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <FAQ />
+  <Contact />
+</Layout>

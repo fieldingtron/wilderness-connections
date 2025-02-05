@@ -1,11 +1,7 @@
 ---
 import * as Content from "../content/index.mdx";
 // console.log(Content.frontmatter.trips);
-const tripEntries = await import.meta.glob("../content/trips/*.mdx", {
-  eager: true,
-});
-console.log("tripEntries", tripEntries);
-const trips = Object.values(tripEntries).map((mod) => mod.frontmatter);
+const trips = Content.frontmatter.trips;
 ---
 
 <section
@@ -27,8 +23,8 @@ const trips = Object.values(tripEntries).map((mod) => mod.frontmatter);
     </div>
     <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
       {
-        trips.map((trip) => (
-          <a href={`/trips/${trip.slug}`}>
+        trips.map((trip, i) => (
+          <a href={`#trip${i}`} class="open-popup-link" key={i}>
             <div class="group relative bg-white rounded-lg shadow-lg transition-shadow duration-300 hover:shadow-2xl dark:bg-gray-900 flex flex-col md:flex-row h-full mx-10">
               <div class="relative w-full md:w-1/2 h-64 md:h-auto overflow-hidden">
                 <img
