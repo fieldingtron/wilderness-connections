@@ -37,23 +37,25 @@ if (!trip) {
         class="w-full max-w-2xl mx-auto mt-6 rounded-lg shadow-lg"
       />
       <div class="max-w-2xl mx-auto mt-6">
-        <p class="mt-4 text-lg"><strong>Dates:</strong> {trip.dates}</p>
-        <p class="mt-2 text-lg"><strong>Details:</strong> {trip.details}</p>
-        <p class="mt-2 text-lg"><strong>Price:</strong> {trip.price}</p>
+        <article class="prose dark:prose-invert lg:prose-lg mx-auto mt-8">
+          <p class="mt-4 text-2xl font-semibold">
+            <strong>Dates:</strong>
+            {trip.dates}
+          </p>
+          <p class="mt-2 text-2xl font-semibold">
+            <strong>Price:</strong>
+            {trip.price}
+          </p>
 
-        <h2 class="mt-6 text-2xl font-semibold">Additional Details</h2>
-        <ul class="mt-2 list-disc list-inside text-lg">
-          {trip.additionalDetails.map((detail) => <li>{detail}</li>)}
-        </ul>
+          <h2 class="mt-6 text-2xl font-semibold">Highlights</h2>
+          <ul class="mt-2 list-disc list-inside text-lg">
+            {trip.additionalDetails.map((detail) => <li>{detail}</li>)}
+          </ul>
 
-        <!-- Render the MDX content below -->
-        <div class="prose lg:prose-xl mx-auto mt-8">
+          <!-- Render the MDX content below -->
+
           <trip.Content />
-        </div>
-
-        <a href="/trips" class="block mt-6 text-blue-500 hover:underline">
-          Back to all trips
-        </a>
+        </article>
       </div>
     </div>
   </section>

@@ -4,7 +4,7 @@ import * as Content from "../content/index.mdx";
 const tripEntries = await import.meta.glob("../content/trips/*.mdx", {
   eager: true,
 });
-console.log("tripEntries", tripEntries);
+//console.log("tripEntries", tripEntries);
 const trips = Object.values(tripEntries).map((mod) => mod.frontmatter);
 ---
 
