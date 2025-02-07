@@ -25,27 +25,29 @@ const boardMembers: BoardMember[] = [
 ---
 
 <section class="pt-8">
-  <div class="container mx-auto px-6 py-12">
-    <h2 class="text-3xl font-bold text-center text-green-600">Leadership</h2>
-    <div class="mt-8 space-y-10">
-      {
-        boardMembers.map((member) => (
-          <div class="flex flex-col md:flex-row items-center md:items-start md:space-x-8">
-            <div class="w-full md:w-1/4">
-              <img
-                src={member.image}
-                alt={member.name}
-                class="w-full h-auto rounded-lg object-cover shadow-lg"
-              />
+  <div class="px-6 sm:px-8 md:px-12 lg:px-16 xl:px-24 2xl:px-32 py-12">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-center text-green-600">Leadership</h2>
+      <div class="mt-8 space-y-10">
+        {
+          boardMembers.map((member) => (
+            <div class="group flex flex-col md:flex-row items-center md:items-start md:space-x-8">
+              <div class="w-full md:w-1/4 overflow-hidden rounded-lg">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  class="w-full h-48 md:h-60 object-cover object-center transform transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+              <div class="w-full md:w-3/4">
+                <h3 class="text-lg font-bold text-green-700">{member.name}</h3>
+                <p class="italic ">{member.role}</p>
+                <p class=" mt-2">{member.description}</p>
+              </div>
             </div>
-            <div class="w-full md:w-3/4">
-              <h3 class="text-lg font-bold text-green-700">{member.name}</h3>
-              <p class="italic text-gray-600">{member.role}</p>
-              <p class="text-gray-700 mt-2">{member.description}</p>
-            </div>
-          </div>
-        ))
-      }
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
